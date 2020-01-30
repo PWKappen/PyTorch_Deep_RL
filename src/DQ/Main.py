@@ -8,7 +8,7 @@ import ReplayMemory
 import Explorer
 import torch.optim as optim
 
-OUTPUT_SIZE = 2
+NUM_OUTPUS = 2
 REPLAY_MEMORY_SIZE = 50000
 BATCH_SIZE = 32
 GAMMA = 0.99
@@ -21,7 +21,7 @@ NUM_STEPS_WAIT = 20000
 
 env = gym.make('Pong-v0')
 
-DQ = DRLAlgorithms.DQ(Models.BasicImageNetwork, OUTPUT_SIZE, optim.Adam, LEARNING_RATE, ReplayMemory.BasicMemory(REPLAY_MEMORY_SIZE),
+DQ = DRLAlgorithms.DQ(Models.BasicImageNetwork, NUM_OUTPUS, optim.Adam, LEARNING_RATE, ReplayMemory.BasicMemory(REPLAY_MEMORY_SIZE),
                  Explorer.ExponentialExplorer(EPS_END, EPS_START, EPS_DECAY, NUM_STEPS_WAIT), BATCH_SIZE, GAMMA, True, 1000)
 
 episode_durations = []
